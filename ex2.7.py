@@ -1,6 +1,7 @@
 # Ex. 2.7
 # RSA Encryption
 n=1
+import math
 
 def word(n):
     str=" "
@@ -23,10 +24,13 @@ r=1
 while br!=1:
     br=(br*b)%N
     r+=1
-print(r)
+print('r=', r)
 
 
-while ((a**r)%N != 1):
-    a+=1
+d=1
+while ((c*d)%r != 1):
+    d+=1
+
+a=pow(b,d,N)
 
 print('The message is: ', word(a))
