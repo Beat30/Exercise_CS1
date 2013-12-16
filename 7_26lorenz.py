@@ -92,7 +92,7 @@ def ode(ht,wd,color):
 
 def screenSaver(wd,ht):
     """Create a screen saver
-    @param wd with of the screen
+    @param wd width of the screen
     @param ht height of the screen
     """
     col=["red","green","blue","brown","gold","maroon"]

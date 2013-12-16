@@ -1,11 +1,9 @@
 
 
-import math as m
 import numpy as np
 from numpy import pi, arange, concatenate
-from scipy import fft
 from pylab import subplot, plot, show
-import random as r
+import random as rd
 
 N=60
 M=500
@@ -14,7 +12,7 @@ random+=[-1]*N
 random+=[1]*N
 ss=[]
 for j in range(M):
-    r.shuffle(random)
+    rd.shuffle(random)
     s=[]
     for i in range(0,2*N):
         if i==0:
@@ -29,7 +27,6 @@ for j in range(M):
     
 ss=np.array(ss)/N
 
-#print(ss)
 
 pks=0
 d=24.
@@ -38,8 +35,8 @@ nu=np.sqrt(d*m/(d+m))
 mu=nu+0.12+0.11/nu
 
 for k in range(1000):
-    pks+=2*(1)**k*np.exp(-2*((k+1)*mu*ss)**2)
+    pks+=2*(-1)**k*np.exp(-2*((k+1)*mu*ss)**2)
 
 
-plot(ss,pks,'b.')
+plot(ss,1-pks,'b.')
 show()

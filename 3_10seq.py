@@ -1,5 +1,5 @@
-#Ex.3.10 week3
-# Sequence alignment
+# Ex.3.10
+# Dot plot
 
 from Bio import SeqIO
 handle = open("ls_orchid.fasta")
@@ -15,7 +15,6 @@ seq_two = rec_two.seq
 
 window = 5 # No of characters taken
 data = []
-#data.append(2+4j)
 for i in range(len(seq_one)-window):
     for j in range(len(seq_two)-window):
         if str(seq_one[i:i+window]) == str(seq_two[j:j+window]):

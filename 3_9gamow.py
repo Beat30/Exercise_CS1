@@ -10,6 +10,7 @@ for i in range(0,4):
             dict[a]=[i,j,k,(j+2)%4]
             a+=1
 
+###delete double solutions
 for i in range(1,64):
     for j in range(i+1,65):
         try:
@@ -23,7 +24,7 @@ for i in range(1,64):
         except KeyError:
             pass
 
-#convert number to letter
+###convert number to letter
 num_to_letter = { 0:'A', 1:'C', 2:'T', 3:'G'}
 try:
     for i in dict:
@@ -31,6 +32,8 @@ try:
             dict[i][j]=num_to_letter[dict[i][j]]
 except KeyError:
     pass
-        
+
+###Print solutions        
 print('There are the following', len(dict), 'different Gamow diamonds:')
-print(dict)
+for item in dict:
+    print(dict[item])

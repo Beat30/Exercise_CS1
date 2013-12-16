@@ -10,7 +10,7 @@ from pylab import *
 n=5
  
 def evalp(c,x):
-    #evaluate a polinomial with parameter c at x
+    #evaluate a polynomial with parameter c at x
     sum=c[-1]
     for k in range(len(c)-1,0,-1):
         sum=x*sum+c[k-1]
@@ -24,14 +24,14 @@ def ansatz(n):
         P.append(q)
     return P
  
-def normalise(P): #normalise a polinomial, P contains the coefficients of the polynomial
+def normalise(P): #normalise a polynomial, P contains the coefficients of the polynomial
     for j in range(len(P)):
         P/=fivepoint(lambda x:evalp(P,x)**2,-1,1,10)**0.5
     return P
  
 def gramschmidt(n):
-    #generate n polynumials using the gram-schmidt orthonormal method
-    #P array containig all the polinomial coefficients
+    #generate n polynomials using the gram-schmidt orthonormal method
+    #P array containig all the polynomial coefficients
     P=ansatz(n)
     for m in range(len(P)):
         for j in range(len(P[m])):
@@ -42,7 +42,7 @@ def gramschmidt(n):
     return P
  
 def legendre(n):
-    #generate the first n legendre polinomials using the integral normalisation criteria of the legendre polynomials
+    #generate the first n legendre polynomials using the integral normalisation criteria of the legendre polynomials
     P=gramschmidt(n)
     for i in range(len(P)):
         P[i]=1/(float(i)+1/2.0)**0.5*P[i]

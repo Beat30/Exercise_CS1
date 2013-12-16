@@ -2,7 +2,6 @@
 # Light house problem
 
 
-import math as m
 import numpy as np
 from numpy import pi, arange, concatenate
 from scipy import fft

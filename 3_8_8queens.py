@@ -1,15 +1,16 @@
+#Ex.3.8 8 Queen Problem
+
+
 from itertools import permutations
 
 n = 8
 N=1
 ivec={}
 cols =range(n)
-for vec in permutations(cols):
-    if (n == len(set(vec[i]+i for i in cols))
-          == len(set(vec[i]-i for i in cols))):
-        ivec[N]=list(vec)
+for vec in permutations(cols): #all possible permutations of 0,2,...,n-1
+    if (n == len(set(vec[i]+i for i in cols)) == len(set(vec[i]-i for i in cols))):
+        ivec[N]=list(vec) #write possible solution in ivec
         N+=1
-        #print(vec)
 
 
        
@@ -19,7 +20,8 @@ for i in ivec:
 z=len(ivec)
 print('There are', z, 'solutions,')  
 
-#sort out double solutions
+#########sort out double solutions
+
 for i in range(1,z):
     for k in range(i+1,z+1):
         try:

@@ -7,7 +7,9 @@ import pylab
 import math
 import fractions as fr
 
-N=7000
+
+####### 1. Find prime numbers, write in the array primes
+N=7000 #find all primes p<N
 primes=[]
 notprimes=[]
 y=[]
@@ -18,6 +20,7 @@ for i in range(2,N):
     notprimes+=iprimes
     notprimes+=[i*i]
     if i not in notprimes:
+        #print(i)
         primes+=[i]
         y+=[k*math.log(i)]
         k+=1
@@ -27,7 +30,8 @@ for x in range(2,N):
     if x not in primes:
         nprime += [x]
 
-##
+####### 2. Find carmichael number out of primes
+n=1
 for q in nprime:
     c=1
     a=2
@@ -37,7 +41,8 @@ for q in nprime:
                 c=0
         a+=1
     if (c!=0) and (a<=q):
-        print(q)
+        print('The', n,'. carmichael number is:',q)
+        n+=1
 
 
 

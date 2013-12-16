@@ -5,20 +5,21 @@
 import math
 from numpy import matrix
 from numpy import linalg
+from scipy.linalg import solve
 
 #Resistances
-r01=-1j
-r03=-1j
-r05=-1j
-r12=-1j
-r23=-1j
-r16=-1j
-r27=-1j
-r34=-1j
-r45=-1j
-r56=-1j
-r67=-1j
-r47=-1j
+r01=1+1j
+r03=1+1j
+r05=1+1j
+r12=1+1j
+r23=1+1j
+r16=1+1j
+r27=1+1j
+r34=1+1j
+r45=1+1j
+r56=1+1j
+r67=1+1j
+r47=1+1j
 
 
 A = matrix( [[1/r01+1/r03+1/r05,-1/r01,0,-1/r03,0,-1/r05,0,0,1,0],
@@ -34,7 +35,6 @@ A = matrix( [[1/r01+1/r03+1/r05,-1/r01,0,-1/r03,0,-1/r05,0,0,1,0],
 
 b = matrix( [[0],[0],[0],[0],[0],[0],[0],[0],[0],[1]] )
 
-from scipy.linalg import solve
 X=solve(A,b)
 
 print('V0=', X[0].real , '\nV1=', X[1].real , '\nV2=', X[2].real, '\nV3=', X[3].real , '\nV4=', X[4].real , '\nV5=', X[5].real, '\nV6=', X[6].real , '\nV7=', X[7].real , '\nI1=', X[8].real, '\nI3=', X[9].real)
