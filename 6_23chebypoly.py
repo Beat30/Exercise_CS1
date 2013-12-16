@@ -1,5 +1,5 @@
-from legendre_6_22 import ansatz, evalp
-from newtoncotes import fivepoint
+from p6_22legendre import ansatz, evalp
+from fivepoint import fivepoint
 from scipy import *
 from matplotlib import *
 from pylab import *

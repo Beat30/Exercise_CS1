@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 from numpy import *
 
+'''
 def fried1(a,H0,om,od):
     Ha=H0*sqrt(om/a**3+od)
     return Ha
@@ -20,7 +21,7 @@ def fried2(Ha,a):
 def fried3(Ha,a):
     rp=-1/(a+a*Ha)
     return rp
-
+'''
 
 def tp(k,a):
     [H0,om,od]=[1,1,1]
@@ -34,17 +35,15 @@ def rp(k,a):
 
 
 
-
-res1=odeint(tp,0,linspace(0.01,1,100))
-res2=odeint(rp,0,linspace(0.01,1,100))
-
-
-
 a=linspace(0.01,1,100)
+
+res1=odeint(rp,0,a)
+res2=odeint(tp,0,a)
+
 
 plt.subplot(211)
 plt.plot(a,res1)
-plt.subplot(212)
 
+plt.subplot(212)
 plt.plot(a,res2)
 plt.show()

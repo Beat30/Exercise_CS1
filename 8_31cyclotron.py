@@ -10,10 +10,10 @@ import matplotlib.pyplot as plt
 def cyclo(y,t): #y[0]=x,1=px, 2=y, 3=py
     global a,w,rootc
     
-    dx=(y[1]+y[2])/rootc(y)#np.sqrt(1+(y[1]+y[2])**2+(y[3]-y[0])**2)
-    dpx=(y[3]-y[0])/rootc(y)#np.sqrt(1+(y[1]+y[2])**2+(y[3]-y[0])**2)
-    dy=(y[3]-y[0])/rootc(y)#np.sqrt(1+(y[1]+y[2])**2+(y[3]-y[0])**2)
-    dpy=(-y[2]-y[1])/rootc(y) + a*cos(w*t)#np.sqrt(1+(y[1]+y[2])**2+(y[3]-y[0])**2)
+    dx=(y[1]+y[2])/rootc(y)
+    dpx=(y[3]-y[0])/rootc(y)
+    dy=(y[3]-y[0])/rootc(y)
+    dpy=(-y[2]-y[1])/rootc(y) + a*cos(w*t)
     return np.array([dx,dpx,dy,dpy])
     
     

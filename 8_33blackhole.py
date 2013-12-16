@@ -1,5 +1,5 @@
 #Black Hole Equations solved with odeint
-#Beat Lauber, Ronny Ruettimann
+#Beat Lauber
 
 import numpy as np
 from numpy import sqrt
@@ -35,7 +35,7 @@ if __name__=='__main__':
     plt.xlabel('x')
     plt.ylabel('y')
     plt.show()
-    #x=y=100, py=0.1, px=0 fuer gedrehte ellipsen
+    #x=y=100, py=0.1, px=0 for rotated ellipse
     #Observation: H<0 for all x,px,y,py
          
     

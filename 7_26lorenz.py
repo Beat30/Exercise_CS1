@@ -2,7 +2,7 @@
 # Ex. 2.26
 # Beat Lauber
 
-from math import cos, sin, pi
+
 import numpy as np
 import scipy
 import matplotlib
@@ -14,8 +14,8 @@ import random
 #import Tkinter as tik
 #import tkMessageBox
 
-def lorenz(X,Y,Z,s,r,b):
-    '''s=sigma, r=r, b=b'''
+def lorenz(X,Y,Z):
+    global s,r,b # constants
     T0=s*(Y-X)
     T1=r*X-Y-X*Z
     T2=X*Y-b*Z
@@ -23,8 +23,7 @@ def lorenz(X,Y,Z,s,r,b):
     return np.array([T0,T1,T2])
 
 
-def rk4(lorenz,t0,X0,Y0,Z0,s,r,b,dt):
-    
+def rk4(lorenz,t0,X0,Y0,Z0,dt):
     x0i=[X0]
     y0i=[Y0]
     z0i=[Z0]
@@ -36,22 +35,22 @@ def rk4(lorenz,t0,X0,Y0,Z0,s,r,b,dt):
         zn=z0i[m-1]
         tn=t0i[m-1]
         
-        dt1=dt*lorenz(xn,yn,zn,s,r,b)
+        dt1=dt*lorenz(xn,yn,zn,)
         dt1x=dt1[0]
         dt1y=dt1[1]
         dt1z=dt1[2]
     
-        dt2=dt*lorenz(xn+dt1x/2.0, yn+dt1y/2.0, zn+dt1z/2.0,s,r,b)
+        dt2=dt*lorenz(xn+dt1x/2.0, yn+dt1y/2.0, zn+dt1z/2.0)
         dt2x=dt2[0]
         dt2y=dt2[1]
         dt2z=dt2[2]
         
-        dt3=dt*lorenz(xn+dt2x/2.0, yn+dt2y/2.0, zn+dt2z/2.0,s,r,b)
+        dt3=dt*lorenz(xn+dt2x/2.0, yn+dt2y/2.0, zn+dt2z/2.0)
         dt3x=dt3[0]
         dt3y=dt3[1]
         dt3z=dt3[2]
     
-        dt4=dt*lorenz(xn+dt3x, yn+dt3y, zn+dt3z,s,r,b)
+        dt4=dt*lorenz(xn+dt3x, yn+dt3y, zn+dt3z)
         dt4x=dt4[0]
         dt4y=dt4[1]
         dt4z=dt4[2]
@@ -68,8 +67,9 @@ if __name__ == '__main__' :
     dt=0.01
     [s,r,b] = [10, 28, 8./3.]
     [t0, X0, Y0, Z0] = [0, 1, 1, 1]
-
-    [t,XX,YY,ZZ] = rk4(lorenz, t0, X0, Y0, Z0, s, r, b,dt)
+    #[t,XX,YY,ZZ] = odeint(lorenz, X0, Y0, Z0,linspace(0,1,100))
+    [t,XX,YY,ZZ] = rk4(lorenz, t0, X0, Y0, Z0, dt)
+    
 
 
 def ode(ht,wd,color):

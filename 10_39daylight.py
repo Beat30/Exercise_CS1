@@ -10,7 +10,7 @@ from numpy import *
 s_per_hour = 60*60.
 s_per_year = 365.242*s_per_hour*24
 inclination = 23.5/180*pi
-equinox13 = 1332331200  # reference time, time.time() at 12:00 UTC, 20. März 2012, 
+equinox = 1332331200  # reference time, time.time() at 12:00 UTC, 20. März 2012, 
 
 def plot_map(name):
     img = imread(name)
@@ -32,7 +32,7 @@ def daylight(longitude, latitude, t):
     
 
 def get_time():
-    return time()-equinox13
+    return time()-equinox
 
 def rot_x(w):
     m = matrix([[1,0,0], [0,cos(w),sin(w)], [0,-sin(w),cos(w)]])

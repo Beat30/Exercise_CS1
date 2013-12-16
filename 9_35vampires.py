@@ -1,5 +1,5 @@
 #9.35 vampires
-#Beat Lauber,
+#Beat Lauber
 
 from math import cos, sin, pi
 import numpy as np
@@ -23,7 +23,7 @@ def vampire(f): #f= list or array
     return df #return array
 
 
-def sprungfrosch(vampire,f0,tmax,dt): #f0=liste
+def leapfrog(vampire,f0,tmax,dt): #f0=liste
     ti=[0]
     fi=[f0]
     mmax=int((tmax)/dt +1)
@@ -51,7 +51,7 @@ if __name__ == '__main__' :
     ffunction=list(np.zeros(xmax/dx))+[pop]+list(np.zeros(xmax/dx))
 
         
-    [t, endfunction]=sprungfrosch(vampire,ffunction,tmax,dt)
+    [t, endfunction]=leapfrog(vampire,ffunction,tmax,dt)
     t=np.array(t)
     endfunction=np.array(endfunction)
     totalendfunctiontime=endfunction[:,1]

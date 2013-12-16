@@ -8,27 +8,27 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 def cheb(x,T0,T1,n):
-    '''RHS of ODE's T0 is function, T1 is 1st diff'''
+    #T0 is the Cheb. polynomial, T1 is the 1st derrivative
     if x==-1:
         x+=0.01
     if x==1:
         x-=0.01
-    H0=T1 #d/dx
-    H1=1/(1-x*x)*(x*T1 -n*n*T0) #d/dx
+    H0=T1 #1st derrivative of Tn
+    H1=1/(1-x*x)*(x*T1 -n*n*T0) #2nd derrivative of Tn, Eqn. 7.9
     return np.array([H0,H1])
 
 
-def rk4(cheb,xmin,xmax,x,T0,T1,n,dx):
-    
+def rk4(cheb,T0,T1,n):
+    global xmin, xmax, dx
+    xi=[xmin]
     if xmax==1:
         xmax-=dx
     if xmin==-1:
         xmin+=dx
     t0i=[T0]
     t1i=[T1]
-    xi=[x]
     mmax=int( (xmax-xmin)/dx +1)
-    for m in range(1,mmax,1):
+    for m in range(1,mmax):
         xn=xi[m-1]
         t0n=t0i[m-1]
         t1n=t1i[m-1]
@@ -57,14 +57,13 @@ def rk4(cheb,xmin,xmax,x,T0,T1,n,dx):
     return [xi,t0i,t1i]
 
 if __name__ == '__main__' :
-    
-    n=8
-    [xmin,xmax,dx] = [-1.0, 1.0, 0.001]
-    [x0, T0, T1] = [xmin, cos(n*pi/2), n*sin(n*pi/2)]
 
-    [x,TT0,TT1] = rk4(cheb, xmin, xmax, x0, T0, T1, n, dx)
-    plt.subplot(211)
-    plt.plot(x,TT0)
-    plt.subplot(212)
-    plt.plot(x,TT1)
+
+    for n in range(5):
+    
+        [xmin,xmax,dx] = [-1.0, 1.0, 0.001]
+        [T0, T1] = [cos(n*pi/2), n*sin(n*pi/2)]
+        [x,TT0,TT1] = rk4(cheb, T0, T1, n)
+        plt.plot(x,TT0)
+       
     plt.show()
